@@ -1,12 +1,15 @@
 package com.bignerdranch.android.criminalintent.model
 
-import android.text.format.DateFormat
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
+@Entity
 data class Crime(
-    val id: UUID = UUID.randomUUID(),
+    @PrimaryKey val id: UUID = UUID.randomUUID(),
     var title: String = "",
-    var date: String = DateFormat.format("EEEE, dd MMMM yyyy", Date()).toString(),
+    var date: Date = Date(),
+    //var date: String = DateFormat.format("EEEE, dd MMMM yyyy", Date()).toString(),
     var isSolved: Boolean = false,
-    var requiresPolice: Boolean = false
+    //var requiresPolice: Boolean = false
 )
