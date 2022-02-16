@@ -6,24 +6,20 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
+import com.bignerdranch.android.criminalintent.databinding.FragmentCrimeBinding
 import com.bignerdranch.android.criminalintent.model.Crime
 import java.util.*
 
 private const val ARG_CRIME_ID = "crime_id"
-private const val TAG = "CrimeFragment"
 
 class CrimeFragment : Fragment() {
 
+    private var _binding: FragmentCrimeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var crime: Crime
-    private lateinit var titleField: EditText
-    private lateinit var dateButton: Button
-    private lateinit var solvedCheckBox: CheckBox
     private val crimeDetailViewModel: CrimeDetailViewModel by lazy {
         ViewModelProvider(this).get(CrimeDetailViewModel::class.java)
     }
@@ -40,16 +36,13 @@ class CrimeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_crime, container, false)
-        titleField = view.findViewById(R.id.crime_title) as EditText
-        dateButton = view.findViewById(R.id.crime_date) as Button
-        solvedCheckBox = view.findViewById(R.id.crime_solved) as CheckBox
+        _binding = FragmentCrimeBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        dateButton.apply {
+        binding.crimeDate.apply {
             text = crime.date.toString()
             isEnabled = false
         }
-
         return view
     }
 
@@ -83,9 +76,9 @@ class CrimeFragment : Fragment() {
             }
         }
 
-        titleField.addTextChangedListener(titleWatcher)
+        binding.crimeTitle.addTextChangedListener(titleWatcher)
 
-        solvedCheckBox.apply {
+        binding.crimeSolved.apply {
             setOnCheckedChangeListener { _, isChecked -> crime.isSolved = isChecked }
         }
     }
@@ -96,9 +89,9 @@ class CrimeFragment : Fragment() {
     }
 
     private fun updateUI() {
-        titleField.setText(crime.title)
-        dateButton.text = crime.date.toString()
-        solvedCheckBox.apply {
+        binding.crimeTitle.setText(crime.title)
+        binding.crimeDate.text = crime.date.toString()
+        binding.crimeSolved.apply {
             isChecked = crime.isSolved
             jumpDrawablesToCurrentState()
         }

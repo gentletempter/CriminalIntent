@@ -1,4 +1,4 @@
-package com.bignerdranch.android.criminalintent.model
+package com.bignerdranch.android.criminalintent
 
 import android.content.Context
 import android.os.Bundle
@@ -8,14 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bignerdranch.android.criminalintent.CrimeListViewModel
-import com.bignerdranch.android.criminalintent.R
+import com.bignerdranch.android.criminalintent.databinding.FragmentCrimeListBinding
+import com.bignerdranch.android.criminalintent.model.Crime
 import java.util.*
 
 private const val TAG = "CrimeListFragment"
@@ -26,8 +25,9 @@ class CrimeListFragment : Fragment() {
         fun onCrimeSelected(crimeID: UUID)
     }
 
+    private var _binding: FragmentCrimeListBinding? = null
+    private val binding get() = _binding!!
     private var callbacks: Callbacks? = null
-    private lateinit var crimeRecyclerView: RecyclerView
     private var adapter: CrimeAdapter? = CrimeAdapter(emptyList())
     private val crimeListViewModel: CrimeListViewModel by lazy {
         ViewModelProvider(this).get(CrimeListViewModel::class.java)
@@ -43,12 +43,12 @@ class CrimeListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_crime_list, container, false)
-
-        crimeRecyclerView = view.findViewById(R.id.crime_recycler_view) as RecyclerView
-        crimeRecyclerView.layoutManager = LinearLayoutManager(context)
-        crimeRecyclerView.adapter = adapter
-
+        _binding = FragmentCrimeListBinding.inflate(inflater, container, false)
+        val view = binding.root
+        with(binding.crimeRecyclerView) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = adapter
+        }
         return view
     }
 
@@ -69,7 +69,7 @@ class CrimeListFragment : Fragment() {
 
     private fun updateUI(crimes: List<Crime>) {
         adapter = CrimeAdapter(crimes)
-        crimeRecyclerView.adapter = adapter
+        binding.crimeRecyclerView.adapter = adapter
     }
 
     private inner class CrimeHolder(view: View) : RecyclerView.ViewHolder(view),
@@ -101,7 +101,9 @@ class CrimeListFragment : Fragment() {
         }
     }
 
-    private inner class CrimeAdapter(var crimes: List<Crime>) :
+    private inner class CrimeAdapter(
+        var crimes: List<Crime>
+    ) :
         RecyclerView.Adapter<CrimeHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CrimeHolder {
             return if (viewType == 1) {
