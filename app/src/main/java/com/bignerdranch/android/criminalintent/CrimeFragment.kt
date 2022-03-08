@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
 import com.bignerdranch.android.criminalintent.databinding.FragmentCrimeBinding
@@ -14,8 +15,9 @@ import com.bignerdranch.android.criminalintent.model.Crime
 import java.util.*
 
 private const val ARG_CRIME_ID = "crime_id"
+private const val REQUEST_DATE = "DialogDate"
 
-class CrimeFragment : Fragment() {
+class CrimeFragment : Fragment(), FragmentResultListener {
 
     private var _binding: FragmentCrimeBinding? = null
     private val binding get() = _binding!!
@@ -38,11 +40,6 @@ class CrimeFragment : Fragment() {
     ): View? {
         _binding = FragmentCrimeBinding.inflate(inflater, container, false)
         val view = binding.root
-
-        binding.crimeDate.apply {
-            text = crime.date.toString()
-            isEnabled = false
-        }
         return view
     }
 
@@ -56,6 +53,7 @@ class CrimeFragment : Fragment() {
                 }
             }
         )
+        childFragmentManager.setFragmentResultListener(REQUEST_DATE, viewLifecycleOwner, this)
     }
 
     override fun onStart() {
@@ -64,7 +62,7 @@ class CrimeFragment : Fragment() {
         val titleWatcher = object : TextWatcher {
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // xx
+                //some logic
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -72,7 +70,7 @@ class CrimeFragment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                //asd
+                //some logic
             }
         }
 
@@ -80,6 +78,12 @@ class CrimeFragment : Fragment() {
 
         binding.crimeSolved.apply {
             setOnCheckedChangeListener { _, isChecked -> crime.isSolved = isChecked }
+        }
+
+        binding.crimeDate.setOnClickListener {
+            DatePickerFragment
+                .newInstance(crime.date, REQUEST_DATE)
+                .show(childFragmentManager, REQUEST_DATE)
         }
     }
 
@@ -104,6 +108,15 @@ class CrimeFragment : Fragment() {
             }
             return CrimeFragment().apply {
                 arguments = args
+            }
+        }
+    }
+
+    override fun onFragmentResult(requestKey: String, result: Bundle) {
+        when (requestKey) {
+            REQUEST_DATE -> {
+                crime.date = DatePickerFragment.getSelectedDate(result)
+                updateUI()
             }
         }
     }
