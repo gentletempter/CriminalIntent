@@ -8,8 +8,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 abstract class BaseAuthFragment : Fragment() {
-    @Inject
-    lateinit var preferences: PreferencesI
+//    @Inject
+//    lateinit var preferences: PreferencesI
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

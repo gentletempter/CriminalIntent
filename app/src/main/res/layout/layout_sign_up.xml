@@ -10,7 +10,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/auth_sign_in"
+        android:hint="@string/email"
         android:paddingHorizontal="16dp"
         app:boxStrokeColor="@color/auth_input_layout_stroke_color_default"
         app:errorEnabled="true"
