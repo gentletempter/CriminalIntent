@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.criminalintent.R
 import com.bignerdranch.android.criminalintent.databinding.FragmentCrimeListBinding
 import com.bignerdranch.android.criminalintent.model.local.crime.Crime
-import com.bignerdranch.android.criminalintent.presentation.content.base.BaseContentFragment
 import com.bignerdranch.android.criminalintent.presentation.contract.navigator
 import java.util.*
 

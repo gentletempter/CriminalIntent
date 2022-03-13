@@ -98,7 +98,7 @@ class SignUpFragment : BaseAuthFragment() {
             viewModel.onSignUpClicked(email, password, repeatPassword)
         }
         buttonSignIn.setOnClickListener {
-            //this.findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
+            navigator().goToSignIn()
         }
     }
 

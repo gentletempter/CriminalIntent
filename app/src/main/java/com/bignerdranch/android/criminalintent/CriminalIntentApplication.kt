@@ -1,7 +1,7 @@
 package com.bignerdranch.android.criminalintent
 
 import android.app.Application
-import com.bignerdranch.android.criminalintent.database.CrimeRepository
+import com.bignerdranch.android.criminalintent.data.repository.crime.CrimeRepository
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp

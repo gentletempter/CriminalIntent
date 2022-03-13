@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.bignerdranch.android.criminalintent.database.CrimeRepository
+import com.bignerdranch.android.criminalintent.data.repository.crime.CrimeRepository
 import com.bignerdranch.android.criminalintent.model.local.crime.Crime
 import java.io.File
 import java.util.*
