@@ -1,4 +1,4 @@
-package com.bignerdranch.android.criminalintent
+package com.bignerdranch.android.criminalintent.presentation.content.crimes
 
 import android.app.DatePickerDialog
 import android.app.Dialog

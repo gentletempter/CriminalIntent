@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#03A9F4</color>
+    <color name="overlay">#6D000000</color>
+    <color name="auth_input_layout_stroke">#00FF3D</color>
+    <color name="colorAccent">#FF4081</color>
 </resources>

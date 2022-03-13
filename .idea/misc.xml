@@ -3,7 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Anton/StudioProjects/CriminalIntent/app/src/main/res/drawable/ic_log_out.xml" value="0.366" />
+        <entry key="..\:/Users/Anton/StudioProjects/CriminalIntent/app/src/main/res/layout/activity_crime.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Anton/StudioProjects/CriminalIntent/app/src/main/res/layout/activity_main.xml" value="0.2838541666666667" />
+        <entry key="..\:/Users/Anton/StudioProjects/CriminalIntent/app/src/main/res/layout/fragment_crime.xml" value="0.1" />
         <entry key="..\:/Users/Anton/StudioProjects/CriminalIntent/app/src/main/res/layout/fragment_crime_list.xml" value="0.12407407407407407" />
+        <entry key="..\:/Users/Anton/StudioProjects/CriminalIntent/app/src/main/res/layout/layout_auth.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Anton/StudioProjects/CriminalIntent/app/src/main/res/layout/layout_logout_dialog_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Anton/StudioProjects/CriminalIntent/app/src/main/res/layout/layout_sign_in.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Anton/StudioProjects/CriminalIntent/app/src/main/res/layout/layout_sign_up.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Anton/StudioProjects/CriminalIntent/app/src/main/res/menu/fragment_crime_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Anton/StudioProjects/CriminalIntent/app/src/main/res/xml/files.xml" value="0.1778115501519757" />
       </map>
     </option>
   </component>
